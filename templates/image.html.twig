@@ -1,0 +1,13 @@
+{#
+/**
+ * @file
+ * Theme override of an image.
+ *
+ * The classic theme added `.img-responsive` based on a Bootstrap sub-theme
+ * setting (which defaulted to on). This standalone theme applies it
+ * unconditionally so images stay fluid within their container.
+ *
+ * @see template_preprocess_image()
+ */
+#}
+<img{{ attributes.addClass('img-responsive') }} />

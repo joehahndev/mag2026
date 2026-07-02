@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 60" role="img" aria-label="The Magazine">
+  <style>
+    .brand { font-family: 'Oswald', 'Arial Narrow', sans-serif; font-weight: 600; fill: #231f20; }
+    .the   { font-family: 'Oswald', 'Arial Narrow', sans-serif; font-weight: 400; fill: #800000; }
+  </style>
+  <text class="the"   x="0"   y="44" font-size="34" letter-spacing="2">THE</text>
+  <text class="brand" x="78"  y="44" font-size="44" letter-spacing="3">MAGAZINE</text>
+</svg>

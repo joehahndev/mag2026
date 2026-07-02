@@ -1,0 +1,131 @@
+{#
+/**
+ * @file
+ * Theme override for the primary magazine navigation.
+ *
+ * The classic theme hard-coded this menu as static markup (rather than looping
+ * over menu items) so the columns and dropdowns could be laid out precisely.
+ * That structure is preserved here — only the university-specific labels and
+ * external links have been genericised for this standalone/demo build.
+ */
+#}
+<div class="mnavcon col-sm-9 col-sm-push-3">
+
+  <ul class="menu nav navbar-nav">
+    <li class="col-md-2 navspacer">
+      &nbsp;&nbsp;&nbsp;&nbsp;
+    </li>
+    <li class="expanded dropdown col-md-2">
+      <a href="#" class="dropdown-toggle" data-target="#" data-toggle="dropdown">Issues
+        <span class="caret"></span>
+      </a>
+      <ul class="menu dropdown-menu">
+        <li>
+          <a href="/current-issue" data-drupal-link-system-path="current-issue">Current Issue</a>
+        </li>
+        <li>
+          <a href="/back-issues" data-drupal-link-system-path="back-issues">Back Issues</a>
+        </li>
+      </ul>
+    </li>
+    <li class="expanded dropdown col-md-2">
+      <a href="#" class="dropdown-toggle" data-target="#" data-toggle="dropdown">Topics
+        <span class="caret"></span>
+      </a>
+      <ul class="menu dropdown-menu">
+        <li>
+          <a href="/topics/arts-humanities" title="Arts &amp; Humanities">Arts &amp; Humanities</a>
+        </li>
+        <li>
+          <a href="/topics/economics-business" title="Economics &amp; Business">Economics &amp; Business</a>
+        </li>
+        <li>
+          <a href="/topics/education-social-service" title="Education &amp; Social Service">Education &amp; Social Service</a>
+        </li>
+        <li>
+          <a href="/topics/law-policy-society" title="Law, Policy &amp; Society">Law, Policy &amp; Society</a>
+        </li>
+        <li>
+          <a href="/topics/science-medicine" title="Science &amp; Medicine">Science &amp; Medicine</a>
+        </li>
+        <li>
+          <a href="/topics/university-news" title="University News">University News</a>
+        </li>
+      </ul>
+    </li>
+    <li class="expanded dropdown col-md-2">
+      <a href="#" class="dropdown-toggle" data-target="#" data-toggle="dropdown">Alumni
+        <span class="caret"></span>
+      </a>
+      <ul class="menu dropdown-menu">
+        <li>
+          <a href="/formats/alumni-essay" title="Essays">Essays</a>
+        </li>
+        <li>
+          <a href="/formats/notes" title="In the News">In the News</a>
+        </li>
+        <li>
+          <a href="/formats/releases" title="Releases">Releases</a>
+        </li>
+        <li class="notesli">
+          <a href="/formats/notes" title="Class Notes">Class Notes</a>
+        </li>
+      </ul>
+    </li>
+    <li class="expanded dropdown col-md-2">
+      <a href="#" class="dropdown-toggle" data-target="#" data-toggle="dropdown">About<span class="caret"></span>
+      </a>
+      <ul class="menu dropdown-menu">
+        <li>
+          <a href="/advertising">Advertising</a>
+        </li>
+        <li>
+          <a href="/publications">Publications</a>
+        </li>
+        <li>
+          <a href="/contact">Contact Us</a>
+        </li>
+        <li>
+          <a href="/address-update">Update mailing address</a>
+        </li>
+        <li>
+          <a href="/freelancer-faq">Freelancer FAQ</a>
+        </li>
+        <li>
+          <a href="/masthead">Masthead</a>
+        </li>
+      </ul>
+    </li>
+
+    <li class="col-md-2 searchli">
+      <a class="searchnav" id="showsearch" href="#">
+        <span class="icon glyphicon glyphicon-search" aria-hidden="true"></span>&nbsp;Search</a>
+    </li>
+
+    <li class="expanded dropdown col-md-2 onlymobile">
+      <a href="#" class="dropdown-toggle" data-target="#" data-toggle="dropdown">The&nbsp;University
+        <span class="caret"></span>
+      </a>
+      <ul class="menu dropdown-menu">
+        <li>
+          <a href="#" title="University home">University&nbsp;home</a>
+        </li>
+        <li>
+          <a href="#" title="University News">University&nbsp;News</a>
+        </li>
+      </ul>
+    </li>
+
+    <li class="col-md-2 onlymobile">
+      <a href="#" title="Alumni Association">Alumni&nbsp;Association</a>
+    </li>
+
+    <li class="col-md-2 onlymobile navspacer">
+      &nbsp;&nbsp;&nbsp;&nbsp;
+    </li>
+    <li class="col-md-2 onlymobile">
+      <a class="btn-gift" href="#" title="Make a Gift">Make a Gift</a>
+    </li>
+
+  </ul>
+</div>

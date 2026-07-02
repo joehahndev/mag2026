@@ -1,0 +1,537 @@
+/**
+ * @file
+ * framework.css — a small, self-contained layout framework.
+ *
+ * The classic "mag2" theme was a Bootstrap 3 sub-theme and leaned on Bootstrap
+ * for its grid, navbar, dropdowns, buttons and form controls. This file
+ * reimplements *only the parts that were actually used*, with modern CSS
+ * (flexbox grid, custom properties) but the same class names and the same
+ * measurements (12 columns, 15px gutters, the 768/992/1200px breakpoints), so
+ * the existing markup and custom styles render identically — without Bootstrap.
+ *
+ * Contents:
+ *   1. Design tokens (custom properties)
+ *   2. Reset / box-sizing
+ *   3. Grid: .container, .row, .col-*, push/pull
+ *   4. Navbar + collapse
+ *   5. Dropdowns + caret
+ *   6. Buttons
+ *   7. Forms (.form-control, .form-group)
+ *   8. Utilities (.pull-*, .sr-only, .clearfix, .hidden, .img-responsive …)
+ *   9. Pagination
+ *  10. Search glyph (replaces the single Bootstrap glyphicon used)
+ */
+
+/* 1. Design tokens ------------------------------------------------------- */
+
+:root {
+  --mag-blue: #008cff;
+  --mag-maroon: #800000;
+  --mag-ink: #231f20;
+  --mag-grey: #77787b;
+  --mag-bg: #e8e8e8;
+  --mag-gutter: 15px;
+  --font-body: 'Source Sans Pro', sans-serif;
+  --font-head: 'Oswald', sans-serif;
+}
+
+/* 2. Reset --------------------------------------------------------------- */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* 3. Grid ---------------------------------------------------------------- */
+
+.container,
+.container-fluid {
+  margin-right: auto;
+  margin-left: auto;
+  padding-right: var(--mag-gutter);
+  padding-left: var(--mag-gutter);
+}
+
+/* Bootstrap 3 fixed-container widths at each breakpoint. */
+@media (min-width: 768px) {
+  .container { width: 750px; }
+}
+@media (min-width: 992px) {
+  .container { width: 970px; }
+}
+@media (min-width: 1200px) {
+  .container { width: 1170px; }
+}
+
+/*
+ * Bootstrap 3 uses a FLOAT-based grid, not flexbox. That distinction matters
+ * for fidelity: the site's Views listings (homepage stories, back issues,
+ * taxonomy grids) drop bare `.col-sm-4` cells straight into a wrapper WITHOUT a
+ * flex `.row` parent, and rely on the columns floating to flow side by side. So
+ * this grid floats its columns (and clears them with a clearfixed `.row`),
+ * exactly as Bootstrap did.
+ */
+.row {
+  margin-right: calc(var(--mag-gutter) * -1);
+  margin-left: calc(var(--mag-gutter) * -1);
+}
+
+.row::before,
+.row::after {
+  content: " ";
+  display: table;
+}
+
+.row::after {
+  clear: both;
+}
+
+/* Every column: block-level, full width by default (mobile-first). */
+[class*="col-"] {
+  position: relative;
+  width: 100%;
+  min-height: 1px;
+  padding-right: var(--mag-gutter);
+  padding-left: var(--mag-gutter);
+}
+
+/* The extra-small tier floats and sizes at all widths. */
+.col-xs-1, .col-xs-2, .col-xs-3, .col-xs-4, .col-xs-5, .col-xs-6,
+.col-xs-7, .col-xs-8, .col-xs-9, .col-xs-10, .col-xs-11, .col-xs-12 {
+  float: left;
+}
+.col-xs-1  { width: 8.33333333%; }
+.col-xs-2  { width: 16.66666667%; }
+.col-xs-3  { width: 25%; }
+.col-xs-4  { width: 33.33333333%; }
+.col-xs-5  { width: 41.66666667%; }
+.col-xs-6  { width: 50%; }
+.col-xs-7  { width: 58.33333333%; }
+.col-xs-8  { width: 66.66666667%; }
+.col-xs-9  { width: 75%; }
+.col-xs-10 { width: 83.33333333%; }
+.col-xs-11 { width: 91.66666667%; }
+.col-xs-12 { width: 100%; }
+
+@media (min-width: 768px) {
+  .col-sm-1, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6,
+  .col-sm-7, .col-sm-8, .col-sm-9, .col-sm-10, .col-sm-11, .col-sm-12 {
+    float: left;
+  }
+  .col-sm-1  { width: 8.33333333%; }
+  .col-sm-2  { width: 16.66666667%; }
+  .col-sm-3  { width: 25%; }
+  .col-sm-4  { width: 33.33333333%; }
+  .col-sm-5  { width: 41.66666667%; }
+  .col-sm-6  { width: 50%; }
+  .col-sm-7  { width: 58.33333333%; }
+  .col-sm-8  { width: 66.66666667%; }
+  .col-sm-9  { width: 75%; }
+  .col-sm-10 { width: 83.33333333%; }
+  .col-sm-11 { width: 91.66666667%; }
+  .col-sm-12 { width: 100%; }
+  .col-sm-push-3 { left: 25%; }
+  .col-sm-pull-9 { right: 75%; }
+  .col-sm-push-0 { left: auto; }
+  .col-sm-pull-0 { right: auto; }
+}
+
+@media (min-width: 992px) {
+  .col-md-1, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6,
+  .col-md-7, .col-md-8, .col-md-9, .col-md-10, .col-md-11, .col-md-12 {
+    float: left;
+  }
+  .col-md-1  { width: 8.33333333%; }
+  .col-md-2  { width: 16.66666667%; }
+  .col-md-3  { width: 25%; }
+  .col-md-4  { width: 33.33333333%; }
+  .col-md-5  { width: 41.66666667%; }
+  .col-md-6  { width: 50%; }
+  .col-md-7  { width: 58.33333333%; }
+  .col-md-8  { width: 66.66666667%; }
+  .col-md-9  { width: 75%; }
+  .col-md-10 { width: 83.33333333%; }
+  .col-md-11 { width: 91.66666667%; }
+  .col-md-12 { width: 100%; }
+  /* Push/pull are used to swap the sidebar and content column order. */
+  .col-md-push-3 { left: 25%; }
+  .col-md-pull-9 { right: 75%; }
+  .col-md-push-0 { left: auto; }
+  .col-md-pull-0 { right: auto; }
+}
+
+@media (min-width: 1200px) {
+  .col-lg-1, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6,
+  .col-lg-7, .col-lg-8, .col-lg-9, .col-lg-10, .col-lg-11, .col-lg-12 {
+    float: left;
+  }
+  .col-lg-1  { width: 8.33333333%; }
+  .col-lg-2  { width: 16.66666667%; }
+  .col-lg-3  { width: 25%; }
+  .col-lg-4  { width: 33.33333333%; }
+  .col-lg-5  { width: 41.66666667%; }
+  .col-lg-6  { width: 50%; }
+  .col-lg-7  { width: 58.33333333%; }
+  .col-lg-8  { width: 66.66666667%; }
+  .col-lg-9  { width: 75%; }
+  .col-lg-10 { width: 83.33333333%; }
+  .col-lg-11 { width: 91.66666667%; }
+  .col-lg-12 { width: 100%; }
+}
+
+/* 4. Navbar -------------------------------------------------------------- */
+
+.navbar {
+  position: relative;
+  min-height: 50px;
+  margin-bottom: 20px;
+  border: 1px solid transparent;
+}
+
+.navbar-header {
+  position: relative;
+}
+
+.navbar-collapse {
+  overflow-x: visible;
+  padding-right: var(--mag-gutter);
+  padding-left: var(--mag-gutter);
+  -webkit-overflow-scrolling: touch;
+}
+
+.navbar-nav {
+  margin: 0;
+  padding-left: 0;
+  list-style: none;
+}
+
+.navbar-nav > li {
+  position: relative;
+}
+
+.navbar-nav > li > a {
+  position: relative;
+  display: block;
+  padding: 10px 15px;
+  text-decoration: none;
+}
+
+/* Hamburger toggle (shown on narrow viewports by the theme styles). */
+.navbar-toggle {
+  position: relative;
+  float: right;
+  padding: 9px 10px;
+  margin-top: 8px;
+  margin-right: 15px;
+  margin-bottom: 8px;
+  background-color: transparent;
+  background-image: none;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.navbar-toggle .icon-bar {
+  display: block;
+  width: 22px;
+  height: 2px;
+  border-radius: 1px;
+  background-color: #888;
+}
+
+.navbar-toggle .icon-bar + .icon-bar {
+  margin-top: 4px;
+}
+
+/*
+ * Collapse behaviour. On narrow screens the collapsible region is hidden until
+ * toggled open (the .in class is added by js/mag2026.js, matching the classic
+ * Bootstrap markup). From 768px up it is always visible and inline.
+ */
+.collapse {
+  display: none;
+}
+
+.collapse.in {
+  display: block;
+}
+
+@media (min-width: 768px) {
+  /* Float the menu items horizontally (Bootstrap's navbar model). The theme's
+     style.css floats .navbar-nav itself and sizes the items via col-* classes. */
+  .navbar-nav > li {
+    float: left;
+  }
+  .navbar-toggle {
+    display: none;
+  }
+  .navbar-collapse.collapse {
+    display: block !important;
+    height: auto !important;
+    padding-bottom: 0;
+    overflow: visible !important;
+  }
+}
+
+/* 5. Dropdowns ----------------------------------------------------------- */
+
+.dropdown {
+  position: relative;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 1000;
+  display: none;
+  float: left;
+  min-width: 160px;
+  padding: 5px 0;
+  margin: 2px 0 0;
+  list-style: none;
+  font-size: 14px;
+  text-align: left;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  border-radius: 4px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+}
+
+/* .open is toggled by js/mag2026.js on click (and by :hover fallback). */
+.dropdown.open > .dropdown-menu,
+.dropdown:hover > .dropdown-menu {
+  display: block;
+}
+
+.dropdown-menu > li > a {
+  display: block;
+  padding: 3px 20px;
+  clear: both;
+  font-weight: normal;
+  line-height: 1.42857143;
+  color: #333;
+  white-space: nowrap;
+  text-decoration: none;
+}
+
+.dropdown-menu > li > a:hover,
+.dropdown-menu > li > a:focus {
+  background-color: #f5f5f5;
+}
+
+/*
+ * Caret. The classic theme overrides this with a FontAwesome chevron in
+ * style.css; this is the structural base so the element has size when the
+ * override is absent.
+ */
+.caret {
+  display: inline-block;
+  width: 0;
+  height: 0;
+  margin-left: 2px;
+  vertical-align: middle;
+  border-top: 4px dashed;
+  border-right: 4px solid transparent;
+  border-left: 4px solid transparent;
+}
+
+/* 6. Buttons ------------------------------------------------------------- */
+
+.btn {
+  display: inline-block;
+  padding: 6px 12px;
+  margin-bottom: 0;
+  font-size: 14px;
+  font-weight: normal;
+  line-height: 1.42857143;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  cursor: pointer;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  background-image: none;
+  user-select: none;
+}
+
+.btn-default {
+  color: #333;
+  background-color: #fff;
+  border-color: #ccc;
+}
+
+.btn-primary {
+  color: #fff;
+  background-color: var(--mag-blue);
+  border-color: var(--mag-blue);
+}
+
+/* Primary form submits use .btn-info (Bootstrap 3 values); the theme's
+   style.css layers the magazine's own colours/hover states on top. */
+.btn-info {
+  color: #fff;
+  background-color: #5bc0de;
+  border-color: #46b8da;
+}
+
+/* 7. Forms --------------------------------------------------------------- */
+
+.form-control {
+  display: block;
+  width: 100%;
+  height: 34px;
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 1.42857143;
+  color: #555;
+  background-color: #fff;
+  background-image: none;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+}
+
+.form-control:focus {
+  border-color: #66afe9;
+  outline: 0;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(102, 175, 233, 0.6);
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.select-wrapper {
+  position: relative;
+}
+
+/* 8. Utilities ----------------------------------------------------------- */
+
+.pull-left { float: left !important; }
+.pull-right { float: right !important; }
+
+.clearfix::before,
+.clearfix::after {
+  content: " ";
+  display: table;
+}
+.clearfix::after {
+  clear: both;
+}
+
+.hidden { display: none !important; }
+.show { display: block !important; }
+.invisible { visibility: hidden; }
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+/* Drupal's own visually-hidden helper, used by the skip link. */
+.visually-hidden {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(1px, 1px, 1px, 1px);
+  word-wrap: normal;
+}
+
+.visually-hidden.focusable:active,
+.visually-hidden.focusable:focus {
+  position: static !important;
+  width: auto;
+  height: auto;
+  overflow: visible;
+  clip: auto;
+}
+
+.img-responsive {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+.text-center { text-align: center; }
+.text-right { text-align: right; }
+.text-left { text-align: left; }
+
+/* 9. Pagination ---------------------------------------------------------- */
+
+.pagination {
+  display: inline-block;
+  padding-left: 0;
+  margin: 20px 0;
+  border-radius: 4px;
+}
+
+.pagination > li {
+  display: inline;
+}
+
+.pagination > li > a,
+.pagination > li > span {
+  position: relative;
+  float: left;
+  padding: 6px 12px;
+  margin-left: -1px;
+  line-height: 1.42857143;
+  color: var(--mag-blue);
+  text-decoration: none;
+  background-color: #fff;
+  border: 1px solid #ddd;
+}
+
+.pagination > li:first-child > a,
+.pagination > li:first-child > span {
+  margin-left: 0;
+}
+
+/* 10. Search glyph ------------------------------------------------------- */
+
+/*
+ * The classic theme used exactly one Bootstrap glyphicon (glyphicon-search).
+ * Rather than ship the whole Glyphicons Halflings font, draw it as an inline
+ * SVG. Any element with .glyphicon-search shows a magnifying glass.
+ */
+.glyphicon-search {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  vertical-align: -0.125em;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='currentColor' stroke-width='1.5' stroke-linecap='round'%3E%3Ccircle cx='6.5' cy='6.5' r='5'/%3E%3Cline x1='10.5' y1='10.5' x2='15' y2='15'/%3E%3C/svg%3E");
+}
+
+/* 11. Lightbox overlay (used by js/mag2026.js) --------------------------- */
+
+.mag2026-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5vmin;
+  background: rgba(0, 0, 0, 0.85);
+  cursor: zoom-out;
+}
+
+.mag2026-lightbox img {
+  max-width: 100%;
+  max-height: 100%;
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.5);
+}

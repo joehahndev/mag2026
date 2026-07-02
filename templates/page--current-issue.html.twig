@@ -1,0 +1,95 @@
+{#
+/**
+ * @file
+ * Theme override for the Current Issue page.
+ *
+ * Same standalone navbar/layout as page.html.twig, but the content column is
+ * always full width (col-md-12) because this landing page lays out its own
+ * grid inside the content region.
+ *
+ * @see template_preprocess_page()
+ * @see html.html.twig
+ */
+#}
+{% set container = 'container' %}
+{% set content_attributes = create_attribute() %}
+
+{# Navbar #}
+{% if page.navigation or page.navigation_collapsible %}
+  {% block navbar %}
+    <header class="navbar navbar-default {{ container }}" id="navbar" role="banner">
+      <div class="{{ container }}">
+
+        <div class="navbar-header">
+
+          {{ page.navigation }}
+          {% if page.navigation_collapsible %}
+            <div class="navlogo"><a href="/"><img class="ucnavlogo" src="/themes/custom/mag2026/img/magazine-wordmark.svg" alt="{{ 'Home'|t }}"></a></div>
+
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
+              <div class="mobsearchicon"><span class="icon glyphicon glyphicon-search" aria-hidden="true"></span></div>
+              <span class="sr-only">{{ 'Toggle navigation'|t }}</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+          {% endif %}
+        </div>
+
+        {% if page.navigation_collapsible %}
+          <div id="navbar-collapse" class="navbar-collapse collapse">
+            {{ page.navigation_collapsible }}
+          </div>
+        {% endif %}
+      </div>
+    </header>
+  {% endblock %}
+{% endif %}
+
+{# Main #}
+{% block main %}
+  <div role="main" class="main-container {{ container }} js-quickedit-main-content">
+    <div class="row">
+
+      {% if page.header %}
+        {% block header %}
+          <div class="col-md-12" role="heading">
+            {{ page.header }}
+          </div>
+        {% endblock %}
+      {% endif %}
+
+      <section{{ content_attributes.addClass('col-md-12') }}>
+
+        {% if page.highlighted %}
+          <div class="highlighted">{{ page.highlighted }}</div>
+        {% endif %}
+
+        {% if breadcrumb %}{{ breadcrumb }}{% endif %}
+
+        {% if action_links %}
+          <ul class="action-links">{{ action_links }}</ul>
+        {% endif %}
+
+        {% if page.help %}{{ page.help }}{% endif %}
+
+        {% block content %}
+          <a id="main-content"></a>
+          {{ page.content }}
+        {% endblock %}
+      </section>
+
+      {% if page.sidebar_second %}
+        <aside class="col-md-3" role="complementary">
+          {{ page.sidebar_second }}
+        </aside>
+      {% endif %}
+    </div>
+  </div>
+{% endblock %}
+
+{% if page.footer %}
+  <footer class="footer {{ container }}" role="contentinfo">
+    {{ page.footer }}
+  </footer>
+{% endif %}

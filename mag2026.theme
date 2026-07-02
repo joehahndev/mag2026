@@ -1,0 +1,98 @@
+<?php
+
+/**
+ * @file
+ * Functions to support the Mag 2026 theme.
+ *
+ * Mag 2026 is a standalone theme: it does not extend Bootstrap. The classic
+ * "mag2" theme inherited a handful of form conveniences from the Bootstrap base
+ * theme's preprocessing — most importantly the `form-control` class on inputs
+ * and the `form-group`/error flags used by form-element.html.twig. Those small
+ * behaviours are reimplemented here so the markup (and therefore the styling)
+ * stays identical without pulling in Bootstrap.
+ */
+
+/**
+ * Input element types that should receive the `.form-control` class.
+ *
+ * Mirrors the set the Bootstrap base theme used to enhance. Buttons, checkboxes,
+ * radios, hidden and file inputs are deliberately excluded.
+ */
+const MAG2026_FORM_CONTROL_TYPES = [
+  'text', 'textfield', 'email', 'tel', 'url', 'search', 'password',
+  'number', 'date', 'datetime', 'datetime-local', 'time', 'week', 'month',
+  'color', 'range', 'search_api_autocomplete',
+];
+
+/**
+ * Implements hook_preprocess_HOOK() for input.html.twig.
+ *
+ * Adds `.form-control` to text-like inputs and `.btn` to buttons, replacing the
+ * enhancement the Bootstrap base theme used to provide.
+ */
+function mag2026_preprocess_input(array &$variables): void {
+  $element = $variables['element'] ?? [];
+  $type = $element['#type'] ?? '';
+
+  if (in_array($type, MAG2026_FORM_CONTROL_TYPES, TRUE)) {
+    $variables['attributes']['class'][] = 'form-control';
+  }
+
+  // Buttons/submits get the base button class so the shared `.btn` styling
+  // (hover/active states) applies, matching the classic theme. Submits are the
+  // primary action and take `.btn-info` (as the Bootstrap sub-theme did);
+  // other buttons take `.btn-default`.
+  $input_type = $variables['attributes']['type'] ?? NULL;
+  $is_submit = in_array($type, ['submit', 'image_button'], TRUE) || $input_type === 'submit';
+  $is_button = in_array($type, ['button'], TRUE) || $input_type === 'button';
+  if ($is_submit || $is_button) {
+    $variables['attributes']['class'][] = 'btn';
+    $variables['attributes']['class'][] = $is_submit ? 'btn-info' : 'btn-default';
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK() for form-element.html.twig.
+ *
+ * Recreates the boolean flags the classic form-element template expects
+ * (`is_form_group`, `is_radio`, `is_checkbox`, `is_autocomplete`, `has_error`)
+ * that were previously set by the Bootstrap base theme.
+ */
+function mag2026_preprocess_form_element(array &$variables): void {
+  $element = $variables['element'] ?? [];
+  $type = $element['#type'] ?? '';
+
+  $variables['is_radio'] = $type === 'radio';
+  $variables['is_checkbox'] = $type === 'checkbox';
+  $variables['is_autocomplete'] = isset($element['#autocomplete_route_name'])
+    || !empty($element['#autocomplete_path']);
+
+  // Everything that is not a radio, checkbox or hidden field is wrapped as a
+  // form group (this is what gives inputs their block layout + spacing).
+  $variables['is_form_group'] = !in_array($type, ['radio', 'checkbox', 'hidden'], TRUE);
+
+  $variables['has_error'] = !empty($element['#errors']);
+}
+
+/**
+ * Taxonomy term IDs that render with the alternate "alumni" colour scheme.
+ *
+ * These are the alumni-facing sections in the "formats" vocabulary (Alumni
+ * Essay, Notes, Releases, Deaths, Lite of the Mind).
+ */
+const MAG2026_ALUMNI_TERMS = [29, 131, 197, 493, 1148];
+
+/**
+ * Implements hook_preprocess_HOOK() for html.html.twig.
+ *
+ * Adds the "alumnitheme" body class on the alumni taxonomy sections so the
+ * classic alternate colour treatment keeps working. The classic theme did this
+ * by shipping five near-identical html--taxonomy--term--NNN.html.twig copies;
+ * one preprocess replaces all of them.
+ */
+function mag2026_preprocess_html(array &$variables): void {
+  $term = \Drupal::routeMatch()->getParameter('taxonomy_term');
+  if ($term && in_array((int) $term->id(), MAG2026_ALUMNI_TERMS, TRUE)) {
+    $variables['attributes']['class'][] = 'alumnitheme';
+  }
+}

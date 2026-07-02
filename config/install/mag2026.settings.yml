@@ -1,0 +1,9 @@
+features:
+  favicon: true
+  logo: true
+logo:
+  use_default: false
+  path: 'themes/custom/mag2026/logo.svg'
+favicon:
+  use_default: false
+  path: 'themes/custom/mag2026/favicon.ico'

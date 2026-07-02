@@ -1,0 +1,42 @@
+{#
+/**
+ * @file
+ * Theme override for the basic structure of a single Drupal page.
+ *
+ * Standalone version. Compared with the classic theme this template:
+ *  - drops the hard-coded third-party tracking (Google Analytics, Matomo,
+ *    Facebook Pixel, Marketo/Munchkin) — analytics belong in site config, not
+ *    a portfolio theme;
+ *  - drops the CDN <script>/<link> tags (jQuery, Font Awesome, matchHeight,
+ *    ekko-lightbox) — everything now ships from the theme's own library;
+ *  - drops the Bootstrap-only body classes (navbar-is-*, has-glyphicons).
+ *
+ * @see template_preprocess_html()
+ */
+#}
+{%
+  set body_classes = [
+    logged_in ? 'user-logged-in',
+    not root_path ? 'path-frontpage' : 'path-' ~ root_path|clean_class,
+    node_type ? 'page-node-type-' ~ node_type|clean_class,
+    db_offline ? 'db-offline',
+  ]
+%}
+<!DOCTYPE html>
+<html{{ html_attributes }}>
+  <head>
+    <head-placeholder token="{{ placeholder_token }}">
+    <title>{{ head_title|safe_join(' | ') }}</title>
+    <css-placeholder token="{{ placeholder_token }}">
+    <js-placeholder token="{{ placeholder_token }}">
+  </head>
+  <body{{ attributes.addClass(body_classes) }}>
+    <a href="#main-content" class="visually-hidden focusable skip-link">
+      {{ 'Skip to main content'|t }}
+    </a>
+    {{ page_top }}
+    {{ page }}
+    {{ page_bottom }}
+    <js-bottom-placeholder token="{{ placeholder_token }}">
+  </body>
+</html>

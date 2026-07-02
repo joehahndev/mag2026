@@ -1,0 +1,26 @@
+# Theme libraries.
+#
+# Everything the theme needs ships from one attached library, "global".
+# There is no Bootstrap, no jQuery plugin CDN, and no external asset host:
+# the layout framework, custom styles, self-hosted fonts, icon fonts and
+# behaviours are all served from this theme.
+
+global:
+  version: 1.x
+  css:
+    # CSS weights control cascade order. "base" loads before "theme".
+    base:
+      fonts/fonts.css: {}
+      css/framework.css: {}
+    theme:
+      fonts/socialicious/css/socialicious.css: {}
+      fonts/justvector-icons/stylesheets/justVector.css: {}
+      css/style.css: {}
+  js:
+    js/mag2026.js: {}
+    js/toggles.js: {}
+    js/script.js: {}
+  dependencies:
+    - core/drupal
+    - core/once
+    - core/jquery

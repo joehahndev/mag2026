@@ -1,0 +1,4 @@
+# Schema for the configuration files of the Mag 2026 theme.
+mag2026.settings:
+  type: theme_settings
+  label: 'Mag 2026 settings'

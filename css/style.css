@@ -1,0 +1,2730 @@
+/**
+ * @file
+ * style.css — the magazine look & feel (ported from the classic mag2 theme).
+ *
+ * This is the custom design layer: typography, colours, the navbar/menu
+ * treatment, homepage story grid, story & issue pages, search, taxonomy
+ * listings and the footer. It sits on top of framework.css (grid/nav/forms)
+ * and fonts.css (self-hosted Source Sans Pro + Oswald).
+ *
+ * Ported verbatim from the original except: the Google Fonts @import was
+ * removed (fonts are now self-hosted), theme-coupled #block-mag2-* selectors
+ * were renamed to #block-mag2026-*, and the two icons that used to depend on
+ * FontAwesome (the dropdown caret and the search-clear X) are drawn as inline
+ * SVG so the theme needs no icon-font CDN.
+ */
+
+
+* {
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+li {
+    list-style-position: inside;
+}
+
+.col-xs-1,
+.col-sm-1,
+.col-md-1,
+.col-lg-1,
+.col-xs-2,
+.col-sm-2,
+.col-md-2,
+.col-lg-2,
+.col-xs-3,
+.col-sm-3,
+.col-md-3,
+.col-lg-3,
+.col-xs-4,
+.col-sm-4,
+.col-md-4,
+.col-lg-4,
+.col-xs-5,
+.col-sm-5,
+.col-md-5,
+.col-lg-5,
+.col-xs-6,
+.col-sm-6,
+.col-md-6,
+.col-lg-6,
+.col-xs-7,
+.col-sm-7,
+.col-md-7,
+.col-lg-7,
+.col-xs-8,
+.col-sm-8,
+.col-md-8,
+.col-lg-8,
+.col-xs-9,
+.col-sm-9,
+.col-md-9,
+.col-lg-9,
+.col-xs-10,
+.col-sm-10,
+.col-md-10,
+.col-lg-10,
+.col-xs-11,
+.col-sm-11,
+.col-md-11,
+.col-lg-11,
+.col-xs-12,
+.col-sm-12,
+.col-md-12,
+.col-lg-12 {
+    position: relative;
+    min-height: 1px;
+    padding-right: 6px;
+    padding-left: 6px;
+}
+
+body {
+    background: #e8e8e8;
+    margin-top: 0;
+}
+
+.bgwrapper {
+    background: #fff;
+    max-width: 970px;
+}
+
+.main-container {
+    padding-bottom: 60px;
+}
+
+.row,
+.navbar,
+.main-container {
+    max-width: 970px;
+}
+
+.footer .container {
+    max-width: 970px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+    font-family: 'Oswald', sans-serif;
+}
+
+.footer.container {
+    background-color: #222222;
+    /*position: absolute;*/
+    left: 0;
+    right: 0;
+    width: 100%;
+}
+
+.footer.container .row {
+    background: #222;
+}
+
+.footer {
+    margin-top: 0;
+    padding-top: 35px;
+    padding-bottom: 36px;
+    border-top: 1px solid #E5E5E5;
+}
+
+.navbar {
+    margin-bottom: 0;
+}
+
+.navbar-collapse.in {
+    /*  overflow-y:visible;*/
+}
+
+.nav>li {
+    /*  display: inline-block;*/
+}
+
+
+/* SEARCH */
+
+.views-exposed-form .form-control {
+    text-decoration: none;
+    font-size: 24px;
+    line-height: 1.1;
+    border: none;
+    border-radius: 0;
+    padding: 6px;
+    padding-left: 16px;
+    height: 45px;
+    color: #555;
+    background-color: #fff;
+    /*min-width: 400px;*/
+}
+
+.views-exposed-form .form-item {
+    margin-top: -25px;
+    margin-right: 15px;
+}
+
+.views-exposed-form .form-item-search-api-fulltext {
+    margin-top: 0;
+}
+
+.views-exposed-form .form-submit {
+    margin-top: -25px;
+    font-size: 24px;
+    line-height: 1.1;
+    border: none;
+    border-radius: 0;
+    padding: 6px;
+    /*padding-left: 16px;*/
+    height: 45px;
+    background-color: #008cff;
+    min-width: 100px;
+}
+
+.view-mag-search-2 .views-row {
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+.view-mag-search-2 .view-content {
+    color: #231f20;
+    font-size: 18px;
+    line-height: 32px;
+}
+
+.view-mag-search-2 .view-header {
+    font: 15px;
+    padding: 6px;
+}
+
+.views-field-field-issue-cover {
+    float: left;
+}
+
+.social [class*="fa fa-"],
+.social [class*="fa icon-"] {
+    background-color: #fff;
+    border-radius: 45px;
+    color: #231f20;
+    display: inline-block;
+    height: 45px;
+    line-height: 45px;
+    margin: 5px 5px;
+    width: 45px;
+    font-size: 25px;
+    text-align: center;
+}
+
+[class^="icon-"]:before,
+[class*=" icon-"]:before {
+    line-height: 45px;
+}
+
+.footer {
+    color: #fff;
+    background-color: #231f20;
+    background: #231f20;
+}
+
+footer .social {
+    float: right;
+}
+
+.footaddr {
+    font-size: 12px;
+    color: #fff;
+    line-height: 18px;
+}
+
+.navbar-default {
+    background-color: transparent;
+    border-color: transparent;
+    border: none;
+}
+
+.caret {
+    display: inline-block;
+    width: 0;
+    height: 0;
+    margin-left: 3px;
+    vertical-align: middle;
+    /*
+    border-top: 4px dashed;
+    border-top: 4px solid \9;
+    border-right: 4px solid transparent;
+    border-left: 4px solid transparent;
+    */
+    border: none;
+    margin-top: -20px;
+}
+
+.caret:before {
+    /* Maroon down-chevron, drawn as inline SVG (was FontAwesome \f107). */
+    content: "";
+    display: inline-block;
+    width: 0.9em;
+    height: 0.9em;
+    vertical-align: middle;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='%23800000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='3,6 8,11 13,6'/%3E%3C/svg%3E");
+}
+
+a:hover,
+a:focus {
+    color: #008cff;
+    /*text-decoration: underline;*/
+    text-decoration: none;
+}
+
+a {
+    color: #008cff;
+    text-decoration: none;
+}
+
+.mnavcon .menu.nav.navbar-nav a {
+    font-family: 'Oswald', sans-serif;
+    color: #231f20;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+#block-mag2026-maglogo {
+    font-family: 'Oswald', sans-serif;
+}
+
+#block-mag2026-maglogo a {
+    font-family: 'Oswald', sans-serif;
+    color: #231f20;
+    font-weight: 500;
+    font-size: 32px;
+    text-decoration: none;
+}
+
+
+/* view-mag-front-feature */
+
+.view-mag-front-feature .views-field-title {
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+.view-mag-front-feature .views-field-title a {
+    font-family: 'Oswald', sans-serif;
+    color: #231f20;
+    font-weight: 700;
+    font-size: 45px;
+    text-decoration: none;
+    padding: 0;
+    margin: 0;
+    line-height: 1.2em;
+}
+
+
+/*
+.view-mag-front-feature [class*="col-"], .view-mag-homepage-stories-2 [class*="col-"] {
+  position: relative;
+  min-height: 1px;
+  padding-right: 0;
+  padding-left: 0;
+}
+*/
+
+.view-mag-front-feature .views-field-title {
+    padding-top: 30px;
+    padding-bottom: 30px;
+    padding-left: 18px;
+}
+
+.navlogo {
+    /*display: inline-block;*/
+    font-family: 'Oswald', sans-serif;
+    font-size: 28px;
+    line-height: 28px;
+    font-weight: 500;
+    color: #231f20;
+    text-decoration: none;
+    position: absolute;
+    margin-top: 10px;
+    /*margin-left: 10px;*/
+    margin-left: -7.5px;
+}
+
+.navlogo a {
+    /*display: inline-block;*/
+    font-family: 'Oswald', sans-serif;
+    font-size: 28px;
+    line-height: 28px;
+    font-weight: 500;
+    color: #231f20;
+    text-decoration: none;
+    position: absolute;
+    margin-top: 6px;
+    margin-left: 18px;
+    /*margin-left: -7.5px;*/
+}
+
+.mnavcon .menu {
+    min-width: 0;
+}
+
+#block-mag2026-contactinfo {
+    padding-top: 30px;
+}
+
+@media (min-width:992px) {
+
+    /* ISSUE COLUMNS */
+    .path-current-issue .content .col-md-6,
+    .page-node-type-magazine-issue .content .col-md-6 {
+        width: 75%;
+    }
+
+    .path-current-issue .wrap1,
+    .page-node-type-magazine-issue .wrap1 {
+        -webkit-column-break-inside: avoid;
+        page-break-inside: avoid;
+        break-inside: avoid;
+        display: table;
+    }
+
+    .path-current-issue .content .col-md-6 .field--name-body,
+    .page-node-type-magazine-issue .content .col-md-6 .field--name-body {
+        -moz-column-count: 3;
+        -moz-column-gap: 12px;
+        -webkit-column-count: 3;
+        -webkit-column-gap: 12px;
+        column-count: 3;
+        column-gap: 12px;
+        width: 100%;
+    }
+
+    /* ISSUE COLUMNS END*/
+    #block-mag2026-contactinfo {
+        padding-top: 190px;
+    }
+
+    .mnavcon .menu {
+        min-width: 100%;
+    }
+
+    .view-mag-front-feature .views-field-title a {
+        font-size: 60px;
+        font-size: 45px;
+        padding-top: 30px;
+        line-height: 70pt;
+    }
+
+    .view-mag-front-feature .views-field-title {
+        padding-top: 30px;
+        padding-bottom: 30px;
+        padding-left: 18px;
+    }
+}
+
+@media (min-width: 768px) {
+    .path-searchterm #showsearch {
+        pointer-events: none;
+    }
+
+    .navbar-nav {
+        float: right;
+        margin: 0;
+    }
+
+    /*
+  .view-mag-front-feature [class*="col-"], .view-mag-homepage-stories-2 [class*="col-"] {
+    position: relative;
+    min-height: 1px;
+    padding-right: 15px;
+    padding-left: 15px;
+  }
+  */
+    .navlogo {
+        /*display: inline-block;*/
+        font-family: 'Oswald', sans-serif;
+        font-size: 32px;
+        line-height: 32px;
+        font-weight: 500;
+        color: #231f20;
+        text-decoration: none;
+        position: absolute;
+        margin-top: 25px;
+    }
+}
+
+.view-mag-front-feature .views-field-title {
+    padding-top: 30px;
+    padding-bottom: 30px;
+    padding-left: 18px;
+}
+
+@media (min-width: 992px) {
+    .view-mag-front-feature .views-field-title a {
+        font-size: 65px;
+    }
+}
+
+.main-container .col-sm-9 {
+    padding: 0;
+    margin: 0;
+}
+
+.view-mag-front-feature .views-field-field-reftopic,
+.view-mag-front-feature .reftopic {
+    float: left;
+    line-height: 1em;
+    width: 50%;
+}
+
+.view-mag-front-feature .reftopic a {
+    font-size: 15px;
+    line-height: 1em;
+}
+
+.view-mag-front-feature .views-field-field-storyimage {
+    /*float: left;*/
+    /*max-width: 100%;*/
+    /*padding-left: 20px;*/
+}
+
+.view-mag-front-feature .int-wrap {
+    padding-left: 14px;
+    padding-right: 14px;
+}
+
+.view-mag-front-feature .issue {
+    float: left;
+    text-align: right;
+    padding-right: 5px;
+    width: 50%;
+}
+
+.view-mag-front-feature .views-field-field-issue {
+    /*text-align: right;*/
+    font-size: 15px;
+    line-height: 1em;
+    color: #77787b;
+    padding-right: 0;
+    padding-left: 18px;
+}
+
+.view-mag-front-feature .views-field-field-refauthors a {
+    color: #77787b;
+    font-size: 15px;
+    text-decoration: none;
+}
+
+.view-mag-front-feature .views-field-field-refauthors {
+    color: #77787b;
+    font-size: 15px;
+    text-decoration: none;
+    padding-left: 18px;
+}
+
+.view-mag-front-feature .views-field-field-subhead {
+    font-size: 24px;
+    padding-top: 60px;
+    padding-left: 18px;
+}
+
+#block-mag2026-views-block-mag-front-feature-block-1 {
+    padding-bottom: 20px;
+    margin-bottom: 30px;
+    margin-left: 12px;
+    margin-right: 12px;
+}
+
+.main-container .col-sm-12,
+.main-container .col-md-12 {
+    padding: 0;
+    margin: 0;
+    padding: 0;
+    margin: 0;
+}
+
+.main-container .col-sm-12 .region-content,
+.main-container .col-md-12 .region-content {
+    padding-left: 12px;
+    padding-right: 12px;
+}
+
+.block-views-blockmag-front-feature-block-1 {
+    background: #fff;
+    padding-top: 20px;
+}
+
+
+/* view-mag-homepage-stories-2 */
+
+.view-mag-homepage-stories-2 .views-field-field-reftopic {
+    padding: 0;
+    margin: 0;
+    text-align: right;
+    position: absolute;
+    bottom: 20px;
+    right: 16px;
+}
+
+.view-mag-homepage-stories-2 .views-field-field-reftopic .field-content {
+    line-height: 1em;
+}
+
+.view-mag-homepage-stories-2 .views-field-field-reftopic a {
+    font-size: 13px;
+    text-decoration: none;
+    line-height: 1em;
+    padding: 0;
+    margin: 0;
+    line-height: 1em;
+    text-align: right;
+}
+
+.view-mag-homepage-stories-2 .views-field-field-issue {
+    line-height: 1em;
+    /*text-align: right;*/
+    color: #77787b;
+    font-size: 13px;
+    padding: 0;
+    margin: 0;
+    text-decoration: none;
+    white-space: nowrap;
+    margin-top: -4px;
+}
+
+.view-mag-homepage-stories-2 .views-field-title {
+    line-height: 28px;
+    padding-top: 20px;
+}
+
+.view-mag-homepage-stories-2 .views-field-field-issue .field-contnet {
+    line-height: 1em;
+}
+
+.view-mag-homepage-stories-2 .views-field-title a {
+    font-family: 'Oswald', sans-serif;
+    color: #800000;
+    font-weight: 500;
+    font-size: 24px;
+    text-decoration: none;
+    padding: 0;
+    margin: 0;
+    line-height: 24px;
+}
+
+.view-mag-homepage-stories-2 .views-field-field-refauthors {
+    color: #231f20;
+    font-size: 12px;
+    text-decoration: none;
+    line-height: 16px;
+    /*padding-top: 6px;*/
+}
+
+.view-mag-homepage-stories-2 .views-field-field-refauthors a {
+    color: #231f20;
+    font-size: 12px;
+    text-decoration: none;
+}
+
+.view-mag-homepage-stories-2 .views-field-field-subhead {
+    color: #231f20;
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 20px;
+    text-decoration: none;
+    padding-bottom: 42px;
+}
+
+.view-mag-homepage-stories-2 .views-field-field-subhead a {
+    color: #231f20;
+    font-size: 15px;
+    text-decoration: none;
+}
+
+.view-mag-homepage-stories-2 .col-sm-4 {}
+
+.view-mag-homepage-stories-2 .views-row {}
+
+.view-mag-homepage-stories-2 .views-field {}
+
+.view-mag-homepage-stories-2 .int-wrap {
+    background: #fff;
+    min-height: 200px;
+    margin-bottom: 12px;
+    padding: 12px;
+    padding-bottom: 0;
+}
+
+
+/**
+ * current-issue-front1
+ */
+
+.block-views-blockmag-current-issue-block-block-1 .block-title,
+.block-views-blockmag-current-issue-block-block-2 .block-title {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 18px;
+    text-transform: uppercase;
+    color: #fff;
+    line-height: 1em;
+    padding: 12px 12px 12px 12px;
+    margin: 0;
+    margin-bottom: 12px;
+    background: #008cff;
+}
+
+.current-issue-front1 .views-field-field-issue-cover {
+    max-width: 107px;
+    margin-right: 12px;
+}
+
+.current-issue-front1 .views-field-field-issue-summary {
+    clear: both;
+}
+
+.current-issue-front1 .views-field-title {
+    font-family: 'Oswald', sans-serif;
+    font-size: 18px;
+    text-transform: uppercase;
+    color: #231f20;
+    line-height: 1em;
+}
+
+.current-issue-front1 .views-field-title a {
+    font-family: 'Oswald', sans-serif;
+    font-size: 18px;
+    text-transform: uppercase;
+    color: #231f20;
+    line-height: 1em;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.current-issue-front1 .views-field-field-issue-num {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 15px;
+    line-height: 20px;
+    color: #231f20;
+}
+
+.current-issue-front1 .views-field-view-node {
+    clear: both;
+    padding-top: 20px;
+}
+
+.current-issue-front1 .views-field-view-node a {
+    font-family: 'Oswald', sans-serif;
+    font-size: 16px;
+    line-height: 24px;
+    color: #008cff;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.current-issue-front1 .views-field-field-issue-pdf {
+    padding-bottom: 5px;
+}
+
+.current-issue-front1 .views-field-field-issue-pdf a {
+    font-family: 'Oswald', sans-serif;
+    font-size: 16px;
+    line-height: 24px;
+    color: #008cff;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.current-issue-front1 .views-field-field-issue-summary h3 a {
+    font-family: 'Oswald', sans-serif;
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 500;
+    color: #800000;
+    text-decoration: none;
+}
+
+.current-issue-front1 .views-field-field-issue-summary h3 {
+    margin: 0;
+    padding: 0;
+    padding-top: 8px;
+}
+
+.current-issue-front1 .views-field-field-issue-summary p {
+    font-size: 16px;
+    line-height: 24px;
+    color: #231f20;
+}
+
+.current-issue-front1 .int-wrap {
+    padding-bottom: 30px;
+}
+
+
+/**
+ * https://github.com/simontabor/jquery-toggles/
+ */
+
+.toggle-slide {
+    overflow: hidden;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    direction: ltr;
+    text-align: center;
+}
+
+div.disabled>.toggle-slide {
+    opacity: 0.7;
+    pointer-events: none;
+}
+
+.toggle-slide .toggle-on,
+.toggle-slide .toggle-off,
+.toggle-slide .toggle-blob {
+    float: left;
+}
+
+.toggle-slide .toggle-blob {
+    position: relative;
+    z-index: 99;
+    cursor: hand;
+    cursor: grab;
+}
+
+.toggle-light .toggle-slide {
+    border-radius: 9999px;
+    /*box-shadow: 0 0 0 1px #999;*/
+}
+
+.toggle-light .toggle-on,
+.toggle-light .toggle-off {
+    font-size: 11px;
+    font-weight: 500;
+}
+
+.toggle-light .toggle-on,
+.toggle-light .toggle-select .toggle-inner .active {
+    background: #fff;
+    /*box-shadow: inset 2px 2px 6px rgba(0, 0, 0, 0.2);*/
+    /*text-shadow: 1px 1px rgba(0, 0, 0, 0.2);*/
+    /*color: #008cff;*/
+}
+
+.toggle-light .toggle-off,
+.toggle-light .toggle-select .toggle-on {
+    /*color: rgba(0, 0, 0, 0.6);*/
+    /*text-shadow: 0 1px rgba(255, 255, 255, 0.2);*/
+    /*background: -webkit-linear-gradient(#cfcfcf, #f5f5f5);*/
+    /*background: linear-gradient(#cfcfcf, #f5f5f5);*/
+    background: #fff;
+}
+
+.toggle-light .toggle-blob {
+    border-radius: 50px;
+    /*background: -webkit-linear-gradient(#f5f5f5, #cfcfcf);*/
+    /*   background: linear-gradient(#f5f5f5, #cfcfcf);*/
+    /*box-shadow: 1px 1px 2px #888;*/
+    background: #008cff;
+}
+
+.toggle-light .toggle-blob:hover {
+    /*background: -webkit-linear-gradient(#e4e4e4, #f9f9f9);
+   background: linear-gradient(#e4e4e4, #f9f9f9);*/
+}
+
+.togglewrap {}
+
+#block-mag2026-topstories1 .block-title,
+#block-mag2026-views-block-mag-top-stories-block-1 .block-title {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 18px;
+    text-transform: uppercase;
+    color: #fff;
+    line-height: 1em;
+    padding: 12px 12px 12px 12px;
+    margin: 0;
+    margin-bottom: 12px;
+    background: #008cff;
+}
+
+#block-mag2026-topstories1 .most-read,
+#block-mag2026-views-block-mag-top-stories-block-1 .most-read {
+    display: inline-block;
+    font-family: 'Oswald', sans-serif;
+    font-size: 16px;
+    line-height: 16px;
+    font-weight: 500;
+    color: #008cff;
+    text-decoration: none;
+    width: 33%;
+    float: left;
+}
+
+#block-mag2026-topstories1 .toggle,
+#block-mag2026-views-block-mag-top-stories-block-1 .toggle {
+    text-align: center;
+    display: inline-block;
+    width: 42px;
+    margin: 0 auto;
+}
+
+#block-mag2026-topstories1 .togglewrap,
+#block-mag2026-views-block-mag-top-stories-block-1 .togglewrap {
+    text-align: center;
+    width: 33%;
+    float: left;
+}
+
+#block-mag2026-topstories1 .field--name-body,
+#block-mag2026-views-block-mag-top-stories-block-1 .field--name-body {
+    line-height: 1em;
+}
+
+#block-mag2026-topstories1 .most-shared,
+#block-mag2026-views-block-mag-top-stories-block-1 .most-shared {
+    text-align: right;
+    display: inline-block;
+    font-family: 'Oswald', sans-serif;
+    font-size: 16px;
+    line-height: 16px;
+    font-weight: 500;
+    color: #008cff;
+    text-decoration: none;
+    width: 33%;
+    float: left;
+}
+
+.view-mag-top-stories .views-row {
+    clear: left;
+}
+
+.view-mag-top-stories .views-field-title a,
+.view-mag-top-stories .top-stories-title a {
+    font-family: 'Oswald', sans-serif;
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 500;
+    color: #800000;
+    text-decoration: none;
+}
+
+.view-mag-top-stories .top-stories-subhead {
+    font-size: 16px;
+    line-height: 24px;
+    color: #231f20;
+    padding-bottom: 20px;
+    display: block;
+}
+
+.view-mag-top-stories .views-row {
+    /*height: 120px;
+overflow: hidden;*/
+}
+
+.light-gradient {}
+
+.view-mag-top-stories .views-field-counter .field-content {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 500;
+    font-size: 50px;
+    line-height: 50px;
+    height: 100%;
+}
+
+.toptoggle {
+    line-height: 30px;
+}
+
+.views-field-field-subhead {}
+
+.view-mag-top-stories .view-content {}
+
+#block-mag2026-views-block-mag-top-stories-block-1 .attachment {}
+
+.views-field-counter {
+    display: block;
+    float: left;
+    padding-right: 12px;
+}
+
+#block-mag2026-views-block-mag-top-stories-block-1 .views-row {}
+
+.top-stories-subhead {
+    padding-left: 38px
+}
+
+.views-field-counter {
+    width: 38px;
+}
+
+
+/**
+ * misc
+ */
+
+#edit-submit-mag-search-2 {
+    /*display: none;*/
+}
+
+html,
+body {
+    overflow-x: hidden;
+}
+
+body {
+    overflow-y: hidden;
+    height: 100%;
+}
+
+.mnavcon {
+    min-height: 80px;
+    padding-top: 15px;
+}
+
+.navcon .menu {
+    min-width: 100%;
+}
+
+.navcon .menu.nav.navbar-nav a {
+    font-family: 'Source Sans Pro', sans-serif;
+    color: #231f20;
+}
+
+#block-mag2026-globalnav {
+    margin: 0 -9999rem;
+    /* add back negative margin value */
+    padding: 0.25rem 9999rem;
+    background: #fff;
+    clear: both;
+    height: 80px;
+}
+
+.navbar-header {
+    float: none;
+    clear: both;
+}
+
+#block-mag2026-globalnav .nav .menu {
+    float: right;
+}
+
+#block-mag2026-globalnav .nav li {
+    display: inline-block;
+    vertical-align: top;
+}
+
+#navbar.container {
+    max-width: 985px;
+}
+
+#block-mag2026-exposedformmag-search-2page-1 {
+    padding-bottom: 0;
+    /*clear: both;*/
+}
+
+.navbar-header .nav {
+    float: right;
+}
+
+.navbar-default {
+    /*  text-align: right;*/
+}
+
+#edit-search-api-fulltext {
+    margin-top: 20px;
+}
+
+#block-mag2026-bootstrap-main-menu li {
+    /*text-align: right;*/
+}
+
+.form-group {
+    margin-bottom: 0;
+}
+
+.region-content .col-sm-12 {
+    padding-left: 6px;
+    padding-right: 6px;
+}
+
+#block-mag2026-magnavlogo {
+    clear: both;
+}
+
+ul .menu .nav {
+    text-align: right;
+}
+
+.fromthearchives1,
+.quoteimage1,
+.alumniessay1,
+.carousel1 {}
+
+.fromthearchives1 .block,
+.quoteimage1 .block,
+.alumniessay1 .block,
+.carousel1 .block {
+    background: #fff;
+    min-height: 260px;
+    margin-bottom: 12px;
+    padding: 12px;
+}
+
+@media (min-width:768px) {
+    .btn-gift {
+        font-family: Arial;
+        color: #800000 !important;
+        font-size: 13px;
+        background: #fff;
+        padding: 5px !important;
+        margin-top: 15px;
+        border: solid #800000 1px;
+        text-decoration: none;
+        text-align: center;
+        -webkit-transition: all ease 0.2s;
+        -moz-transition: all ease 0.2s;
+        transition: all ease 0.2s;
+    }
+
+    .btn-gift:hover {
+        background: #800000 !important;
+        color: #fff !important;
+        text-decoration: none;
+        -webkit-transition: all ease 0.2s;
+        -moz-transition: all ease 0.2s;
+        transition: all ease 0.2s;
+    }
+}
+
+.searchnav,
+.searchnav2 {
+    color: #800000 !important;
+    font-family: 'Oswald', sans-serif;
+}
+
+#searchclose {
+    cursor: pointer;
+    cursor: hand;
+}
+
+.glyphicon-search {
+    font-size: 13px;
+}
+
+.block-views-exposed-filter-blockmag-search-2-page-1 {
+    height: 80px;
+    margin-left: -15px;
+    margin-right: -15px;
+}
+
+.block-views-exposed-filter-blockmag-search-2-page-1 .form-actions {
+    display: none;
+}
+
+.form-item-search-api-fulltext .search-clear {
+    /* Clear-search "X", injected by js/script.js. Drawn as inline SVG
+       (was a FontAwesome fa-window-close glyph). */
+    position: relative;
+    top: -40px;
+    margin-left: -43px;
+    left: 100%;
+    display: inline-block;
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23e8e8e8' stroke-width='2.5' stroke-linecap='round'%3E%3Cline x1='6' y1='6' x2='18' y2='18'/%3E%3Cline x1='18' y1='6' x2='6' y2='18'/%3E%3C/svg%3E");
+}
+
+#views-exposed-form-mag-search-2-page-1 {
+    padding-left: 6px;
+    padding-right: 6px;
+}
+
+#edit-search-api-fulltext.form-control {
+    display: block;
+    width: 100%;
+    height: 45px;
+    padding: 6px;
+    padding-left: 16px;
+    font-size: 24px;
+    line-height: 1.1;
+    color: #555;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+    -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+    -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+    border: none;
+    border-radius: 0;
+    clear: both;
+    z-index: 99;
+    padding-left: 12px;
+    padding-right: 12px;
+}
+
+#block-mag2026-magnavlogo {
+    display: none;
+}
+
+.form-item-search-api-fulltext {
+    /*display: none;*/
+    width: 100%;
+}
+
+#edit-search-api-fulltext {
+    width: 100%;
+}
+
+
+/**
+ * search page
+ */
+
+.view-mag-search-2 .views-field-title a {
+    font-family: 'Oswald', sans-serif;
+    font-size: 20px;
+    line-height: 24px;
+    font-weight: 500;
+    color: #800000;
+    text-decoration: none;
+}
+
+.pagination {
+    font-size: 32px;
+}
+
+
+/**
+ * BACK ISSUES
+ */
+
+.view-mag-back-issues .views-row:nth-child(4n+1) {
+    clear: left
+}
+
+.view-mag-back-issues .int-wrap .views-field-field-issue-summary h3,
+.view-mag-back-issues .int-wrap .views-field-field-issue-summary h2 {
+    /*display: none;*/
+}
+
+.view-mag-back-issues .views-row p {
+    display: none;
+}
+
+.pager-nav {
+    clear: both;
+}
+
+.view-mag-back-issues .views-field-title a {
+    font-family: 'Oswald', sans-serif;
+    font-size: 24px;
+    line-height: 28px;
+    font-weight: 500;
+    text-transform: uppercase;
+    color: #231f20;
+    text-decoration: none;
+}
+
+.view-mag-back-issues .views-field-title {
+    padding-bottom: 8px;
+}
+
+.view-mag-back-issues .views-field-field-issue-cover {
+    padding-bottom: 8px;
+}
+
+.view-mag-back-issues .views-field-view-node a,
+.view-mag-back-issues .views-field-field-issue-pdf a {
+    font-family: 'Oswald', sans-serif;
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 500;
+    color: #008cff;
+    text-decoration: none;
+}
+
+.view-mag-back-issues .views-field-field-issue-summary h3 a {
+    font-family: 'Oswald', sans-serif;
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 500;
+    color: #800000;
+    text-decoration: none;
+    margin: 0;
+}
+
+.view-mag-back-issues .views-field-field-issue-summary h3 a em {
+    font-family: 'Oswald', sans-serif;
+}
+
+.view-mag-back-issues .views-field-field-issue-summary h3 {
+    margin: 0;
+    padding: 0;
+    line-height: 0.8em;
+}
+
+.view-mag-back-issues .views-field-field-issue-summary {
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
+
+.view-mag-back-issues .int-wrap {
+    background: #ffffff;
+    padding: 15px;
+    margin-bottom: 15px;
+}
+
+.path-back-issues h1 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 60px;
+    line-height: 65px;
+    font-weight: 500;
+    color: #231f20;
+    text-decoration: none;
+}
+
+.page-header {
+    padding-bottom: 9px;
+    margin: 40px 0 20px;
+    border-bottom: 1px solid #eee;
+    border: none;
+}
+
+.views-field-field-issue-summary h3 {
+    clear: both;
+}
+
+
+/* STORY */
+
+.page-node-type-story .field--name-field-caption {
+    font-weight: 600;
+    color: #77787b;
+    font-size: 16px;
+    line-height: 24px;
+    padding-top: 8px;
+}
+
+.page-node-type-story .field--name-field-caption p {
+    color: #77787b;
+    font-size: 16px;
+    line-height: 24px;
+    padding-top: 0;
+    font-weight: 600;
+}
+
+.page-node-type-story .mag-story-title {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 500;
+    color: #231f20;
+    font-size: 60px;
+    line-height: 65px;
+    padding-top: 40px;
+    padding-bottom: 30px;
+}
+
+.page-node-type-story .mag-story-title em {
+    font-family: 'Oswald', sans-serif;
+}
+
+.page-node-type-story .region-content {
+    padding-left: 0;
+}
+
+.view-mag-in-the-news {
+    font-size: 16px;
+    padding: 12px;
+}
+
+@media (min-width: 992px) {
+
+    .magazine-issue .field--name-body,
+    .page-node-type-story .region-content {
+        /*padding-left: 107px;*/
+        padding-left: 0;
+    }
+
+    .view-mag-in-the-news {
+        padding-left: 107px;
+    }
+
+    .col-md-9 .region-content {
+        padding-left: 107px;
+    }
+
+    .path-frontpage .col-md-9 .region-content {
+        padding-left: 0;
+    }
+
+    .field--name-field-issue-num {
+        padding-left: 6px;
+    }
+}
+
+.page-node-type-story .story-meta div {
+    display: inline-block;
+}
+
+.page-node-type-story .story-meta {
+    font-size: 16px;
+    line-height: 24px;
+    color: #231f20;
+    display: inline-block;
+    padding-bottom: 40px;
+}
+
+.page-node-type-story .field--name-field-refauthors {
+    font-weight: 500;
+}
+
+.page-node-type-story .field--name-field-subhead {
+    clear: both;
+    font-weight: 500;
+    font-size: 25px;
+    line-height: 36px;
+    color: #231f20;
+    padding-bottom: 30px;
+}
+
+.page-node-type-story .field--name-field-subhead p {
+    clear: both;
+    font-weight: 500;
+    font-size: 25px;
+    line-height: 36px;
+    color: #231f20;
+    padding-bottom: 0;
+}
+
+.page-node-type-story .storytags div {
+    display: inline-block;
+    font-size: 13px;
+    color: #800000;
+    margin: 3px;
+}
+
+.page-node-type-story .storytags a {
+    color: #800000;
+    background: #fff;
+    padding: 3px;
+    margin: 3px;
+    text-transform: uppercase;
+}
+
+
+/*.page-node-type-story .field--name-body p,*/
+
+article .field--name-body p {
+    margin-bottom: 40px;
+}
+
+.page-node-type-story .field--name-body {
+    padding-bottom: 50px;
+    color: #231f20;
+    font-size: 18px;
+    line-height: 32px;
+}
+
+.page-node-type-story .field--name-body * {
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+.page-node-type-story .field--name-body a {
+    font-weight: 500;
+}
+
+.page-node-type-story .field--name-body h2 {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 25px;
+    line-height: 35px;
+    font-weight: 500;
+}
+
+.page-node-type-story h2.related-stories-head,
+.page-node-type-story h2.media-icon-video {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 18px;
+    text-transform: uppercase;
+    color: #fff;
+    line-height: 1em;
+    padding: 12px 12px 12px 12px;
+    margin: 0;
+    margin-top: 30px;
+    margin-bottom: 12px;
+    background: #008cff;
+    clear: both;
+    width: 220px;
+}
+
+.field--name-body h5,
+.field--name-body h6 {
+    visibility: hidden;
+    height: 1.0em;
+    display: none;
+}
+
+.page-node-type-story .page-header {
+    display: none;
+}
+
+.img-responsive {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+@media print {
+
+    .no-print,
+    .no-print *,
+    .region-sidebar-first,
+    .footer,
+    .navbar,
+    .sharing-links,
+    .storytags,
+    .sidebar-first {
+        display: none !important;
+    }
+}
+
+.messages--error {
+    display: none;
+}
+
+.pagination>li>a,
+.pagination span {
+    font-family: 'Oswald', sans-serif !important;
+    font-size: 20px !important;
+    color: #008cff !important;
+}
+
+.pagination>.active>a,
+.pagination>.active>span,
+.pagination>.active>a:hover,
+.pagination>.active>span:hover,
+.pagination>.active>a:focus,
+.pagination>.active>span:focus {
+    z-index: 3;
+    color: #fff !important;
+    cursor: default;
+    background-color: #008cff !important;
+}
+
+
+/* ISSUE */
+
+.magazine-issue .field--name-field-issue-num {
+    font-family: 'Oswald', sans-serif;
+    font-size: 60px;
+    line-height: 65px;
+    font-weight: 500;
+    color: #231f20;
+    text-decoration: none;
+    padding-bottom: 30px;
+    padding-top: 60px;
+}
+
+.magazine-issue .field--name-field-issue-num p {
+    font-family: 'Oswald', sans-serif;
+}
+
+.magazine-issue .field--name-field-issue-pdf a {
+    font-family: 'Oswald', sans-serif;
+    font-size: 16px;
+    line-height: 24px;
+    color: #008cff;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.magazine-issue .field--name-field-issue-pdf {
+    margin-top: 15px;
+}
+
+.magazine-issue .mag-issue-title {
+    font-family: 'Oswald', sans-serif;
+    font-size: 24px;
+    line-height: 28px;
+    font-weight: 500;
+    text-transform: uppercase;
+    color: #231f20;
+    text-decoration: none;
+    padding-bottom: 10px;
+}
+
+@media (min-width: 992px) {
+    .magazine-issue .issue-block {
+        padding-right: 6px;
+        padding-left: 6px;
+        /*  margin-right: 16px;*/
+    }
+}
+
+.magazine-issue .issue-block {
+    background: #fff;
+    padding: 20px;
+    padding: 20px;
+    margin-bottom: 30px;
+}
+
+.magazine-issue .field--name-body h2 {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 18px;
+    text-transform: uppercase;
+    color: #fff;
+    line-height: 1em;
+    padding: 12px 12px 12px 12px;
+    margin: 0;
+    margin-top: 12px;
+    margin-bottom: 12px;
+    background: #008cff;
+    color: #fff;
+}
+
+.magazine-issue .field--name-body h2:first-child {
+    margin-top: 0;
+}
+
+.magazine-issue .field--name-body h3 a,
+.magazine-issue .field--name-body h3 a em {
+    font-family: 'Oswald', sans-serif;
+    color: #800000;
+    font-weight: 500;
+    font-size: 24px;
+    text-decoration: none;
+    padding: 0;
+    margin: 0;
+    line-height: 1em;
+}
+
+
+/* TAXONOMY/TOPIC VIEWS */
+
+.feed-icons {
+    display: none;
+}
+
+.view-taxonomy-term .field--name-name {
+    font-family: 'Oswald', sans-serif;
+    font-size: 60px;
+    line-height: 65px;
+    font-weight: 500;
+    color: #231f20;
+    text-decoration: none;
+    padding-bottom: 5px;
+    padding-top: 30px;
+}
+
+.view-taxonomy-term .views-row:nth-child(4n+1) {
+    clear: left
+}
+
+.view-taxonomy-term .int-wrap {
+    background: #ffffff;
+    padding: 15px;
+    margin-bottom: 15px;
+}
+
+.view-taxonomy-term .views-field-title a {
+    font-family: 'Oswald', sans-serif;
+    color: #800000;
+    font-weight: 500;
+    font-size: 24px;
+    text-decoration: none;
+    padding: 0;
+    margin: 0;
+    line-height: 1em;
+}
+
+.view-taxonomy-term .views-field-field-reftopic {
+    padding: 0;
+    margin: 0;
+    /* width: 66.6%; */
+    padding: 0;
+    margin: 0;
+    text-align: right;
+    position: absolute;
+    bottom: 20px;
+    right: 16px;
+}
+
+.view-taxonomy-term .views-field-field-issue {
+    line-height: 1em;
+    /*text-align: right;*/
+    color: #77787b;
+    font-size: 13px;
+    padding: 0;
+    margin: 0;
+    text-decoration: none;
+    white-space: nowrap;
+    /*margin-top: -16px;*/
+    margin-top: 8px;
+}
+
+.view-taxonomy-term .views-field-title {
+    line-height: 1em;
+    padding-top: 28px;
+}
+
+.view-taxonomy-term .views-field-field-refauthors {
+    color: #77787b;
+    font-size: 12px;
+    text-decoration: none;
+    padding-top: 6px;
+}
+
+.view-taxonomy-term .views-field-field-subhead {
+    color: #231f20;
+    font-size: 15px;
+    text-decoration: none;
+    padding-bottom: 30px;
+}
+
+.view-taxonomy-term .views-field-field-storyimage {
+    padding-bottom: 15px;
+}
+
+
+/* GENERAL PAGES */
+
+article .field--name-body p {
+    margin-bottom: 40px;
+    color: #231f20;
+    font-size: 18px;
+    line-height: 32px;
+}
+
+article .field--name-body li,
+article .field--name-body li a {
+    font-size: 18px;
+}
+
+.page-header .field--name-title {
+    font-family: 'Oswald', sans-serif;
+    font-size: 60px;
+    line-height: 65px;
+    font-weight: 500;
+    color: #231f20;
+    text-decoration: none;
+    padding-bottom: 30px;
+    padding-top: 30px;
+}
+
+body {
+    min-height: 100%;
+    margin: auto;
+}
+
+section {
+    clear: both;
+}
+
+.sharing-links {
+    padding-bottom: 30px;
+}
+
+.pagination>li:last-child>a,
+.pagination>li:last-child>span {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.pagination>li:first-child>a,
+.pagination>li:first-child>span {
+    margin-left: 0;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+
+/* ALUMNI TAXONOMY */
+
+.alumnitheme .navbar-default .navbar-nav>.open>a,
+.alumnitheme .navbar-default .navbar-nav>.open>a:hover,
+.alumnitheme .navbar-default .navbar-nav>.open>.alumnitheme a:focus {
+    color: #555;
+    background-color: #FDE7E0;
+}
+
+.alumnitheme .pagination>.active>a,
+.alumnitheme .pagination>.active>span,
+.alumnitheme .pagination>.active>a:hover,
+.alumnitheme .pagination>.active>span:hover,
+.alumnitheme .pagination>.active>a:focus,
+.alumnitheme .pagination>.active>span:focus {
+    z-index: 3;
+    color: #fff !important;
+    cursor: default;
+    background-color: #0F425C !important;
+}
+
+.alumnitheme .pagination>li>a,
+.alumnitheme .pagination span {
+    font-family: 'Oswald', sans-serif !important;
+    font-size: 20px !important;
+    color: #0F425C !important;
+}
+
+body.alumnitheme {
+    background: #FDE7E0;
+}
+
+.alumnitheme .view-taxonomy-term .int-wrap {
+    background: #0F425C;
+    padding: 15px;
+    margin-bottom: 15px;
+}
+
+.alumnitheme .pagination>.active>a,
+.alumnitheme .pagination>.active>span,
+.alumnitheme .pagination>.active>a:hover,
+.alumnitheme .pagination>.active>span:hover,
+.alumnitheme .pagination>.active>a:focus,
+.alumnitheme .pagination>.active>span:focus {
+    z-index: 3;
+    color: #fff;
+    cursor: default;
+    background-color: #0F425C;
+    border-color: #0F425C;
+    border-top-color: #0F425C;
+    border-right-color: #0F425C;
+    border-bottom-color: #0F425C;
+    border-left-color: #0F425C;
+}
+
+.alumnitheme .view-taxonomy-term .views-field-field-subhead {
+    color: #fff;
+    font-size: 15px;
+    text-decoration: none;
+    padding-bottom: 30px;
+}
+
+.alumnitheme .view-taxonomy-term .views-field-field-issue {
+    line-height: 1em;
+    /*text-align: right;*/
+    color: #e8e8e8;
+    font-size: 13px;
+    padding: 0;
+    margin: 0;
+    text-decoration: none;
+    white-space: nowrap;
+    margin-top: 8px;
+}
+
+.alumnitheme .view-taxonomy-term .views-field-title a {
+    font-family: 'Oswald', sans-serif;
+    color: #e8e8e8;
+    font-weight: 500;
+    font-size: 24px;
+    text-decoration: none;
+    padding: 0;
+    margin: 0;
+    line-height: 1em;
+}
+
+.alumnitheme .int-wrap a {
+    color: #e8e8e8;
+}
+
+.alumnitheme .view-taxonomy-term .views-field-field-refauthors {
+    color: #e8e8e8;
+    font-size: 12px;
+    text-decoration: none;
+    padding-top: 6px;
+}
+
+#block-mag2026-browseearlierbackissuesonthemagazinearchivesite p {
+    text-align: center;
+}
+
+#block-mag2026-browseearlierbackissuesonthemagazinearchivesite a {
+    font-family: 'Oswald', sans-serif;
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 500;
+    color: #800000;
+    text-decoration: none;
+    text-align: center;
+}
+
+.view-mag-back-issues .views-field-field-issue-summary {
+    color: transparent;
+    font-size: 0;
+    -webkit-text-size-adjust: none;
+}
+
+.view-mag-back-issues .views-field-field-issue-summary a {
+    display: block;
+}
+
+.view-mag-back-issues .views-field-field-issue-summary a {
+    display: list-item;
+    list-style-type: disc;
+    list-style-position: inside;
+}
+
+ul.nav li.dropdown:hover>ul.dropdown-menu {
+    /*display: block;*/
+}
+
+.navbar-nav>li>.dropdown-menu {
+    margin-top: -5px;
+    margin-left: 10px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+
+.view-header a {
+    text-decoration: none;
+}
+
+.view-mag-in-the-news .view-header h1 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 60px;
+    line-height: 65px;
+    font-weight: 500;
+    color: #231f20;
+    text-decoration: none;
+    padding-bottom: 5px;
+    padding-top: 30px;
+}
+
+
+/* MOBILE MENU */
+
+.mnavcon .menu.nav.navbar-nav .onlymobile a {
+    font-family: 'Source Sans Pro', sans-serif;
+    /*color: #231f20;*/
+    font-size: 16px;
+    font-weight: normal;
+}
+
+#block-mag2026-globalnav {
+    display: none;
+}
+
+#block-mag2026-magglobalnavigationmobile {
+    display: block;
+}
+
+@media (min-width:768px) {
+    #block-mag2026-globalnav {
+        display: block;
+    }
+
+    .views-field-field-issue-cover,
+    .views-field-field-issue-pdf,
+    .views-field-view-node {
+        clear: both;
+    }
+
+    #block-mag2026-magglobalnavigationmobile {
+        display: none;
+    }
+
+    .onlymobile {
+        display: none !important;
+    }
+
+    .mobsearch {
+        display: none;
+    }
+
+    .path-searchterm #block-mag2026-exposedformmag-search-2page-1 {
+        display: none;
+    }
+}
+
+@media (max-width:991px) {
+    .navcon .nav>li>a {
+        position: relative;
+        display: block;
+        padding-left: 4px;
+        padding-right: 0;
+    }
+
+    .sharing-links {
+        padding: 15px;
+    }
+
+    .storytags {
+        padding: 15px;
+        padding-bottom: 30px;
+    }
+
+    .navbar-header .nav {
+        margin-right: -140px;
+    }
+}
+
+#slick-views-mag-carousel-1-block-1-1 {
+    margin-left: 6px;
+    margin-right: 6px;
+    /*padding: 36px;*/
+    /*background: #231f20;*/
+    color: #231f20;
+    margin-bottom: 12px;
+}
+
+.footerlogo1 {
+    padding-bottom: 24px;
+}
+
+.view-mag-in-the-news .views-row {
+    padding-bottom: 24px;
+}
+
+.view-mag-in-the-news .views-field-title a {
+    font-family: 'Oswald', sans-serif;
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 500;
+    color: #800000;
+    text-decoration: none;
+}
+
+.sidebar-first {
+    padding-left: 12px;
+    padding-right: 0;
+}
+
+
+/* mobile only*/
+
+@media (max-width:767px) {
+    .sidebar-first {
+        padding-left: 6px;
+        padding-right: 6px;
+    }
+
+    .story-inline-img {
+        padding: 36px;
+        /*background: #231f20;*/
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 24px;
+        color: #77787b;
+        font-weight: 600;
+        margin-top: 24px;
+        margin-bottom: 24px;
+    }
+
+    .view-mag-homepage-stories-2 .views-field-field-reftopic {
+        padding: 0;
+        margin: 0;
+        text-align: right;
+        position: absolute;
+        bottom: 12px;
+        right: 16px;
+    }
+
+    /*
+  #slick-views-mag-carousel-1-block-1-1 {
+    margin-left: 6px;
+    margin-right: 6px;
+    padding: 24px;
+    background: #231f20;
+    color: #fff;
+  }
+  */
+    .view-taxonomy-term .views-field-field-reftopic {
+        padding: 0;
+        margin: 0;
+        /* width: 66.6%; */
+        padding: 0;
+        margin: 0;
+        text-align: right;
+        position: absolute;
+        bottom: 20px;
+        right: 16px;
+    }
+
+    .views-field-field-issue-cover,
+    .views-field-field-issue-pdf,
+    .views-field-view-node {
+        clear: both;
+    }
+
+    .block-views-blockmag-front-feature-block-1 {
+        background: #fff;
+        padding-top: 0;
+    }
+
+    .view-mag-front-feature .views-field-field-storyimage {
+        padding: 12px;
+    }
+
+    .footer .container {
+        padding-right: 6px;
+        padding-left: 6px;
+        margin-right: auto;
+        margin-left: auto;
+    }
+
+    .region-sidebar-first {
+        padding-left: 6px;
+        padding-right: 6px;
+    }
+
+    .view-mag-front-feature .reftopic {
+        float: left;
+        line-height: 1em;
+        width: 50%;
+        padding-left: 0;
+        margin-left: -6px;
+    }
+
+    .view-mag-front-feature .views-field-title {
+        padding-top: 30px;
+        padding-bottom: 30px;
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+
+    .view-mag-front-feature .issue {
+        float: left;
+        text-align: right;
+        width: 50%;
+        padding-right: 12px;
+    }
+
+    .navbar-nav>li>a {
+        padding-top: 10px;
+        padding-bottom: 10px;
+        line-height: 20px;
+    }
+
+    .block-views-exposed-filter-blockmag-search-2-page-1 {
+        height: 80px;
+        margin-left: -15px;
+        margin-right: -15px;
+    }
+
+    #edit-search-api-fulltext {
+        margin-top: 10px;
+    }
+
+    .mobsearchicon {
+        float: left;
+    }
+
+    #block-mag2026-exposedformmag-search-2page-1,
+    #block-mag2026-exposedformmag-search-2page-1 {
+        display: block !important;
+    }
+
+    #searchclose {
+        display: none;
+    }
+
+    .form-item-search-api-fulltext.form-group {
+        margin-bottom: 32px;
+    }
+
+    .view-header h1 {
+        padding-top: 0 !important;
+    }
+
+    .main-container {
+        margin-top: 70px;
+    }
+
+    .navbar-collapse {
+        background-color: #e8e8e8;
+    }
+
+    .navbar-header {
+        background: #fff;
+    }
+
+    .navbar-toggle {
+        height: 40px;
+    }
+
+    .path-searchterm .mobsearchicon,
+    .path-search .mobsearchicon {
+        /*display: none;*/
+    }
+
+    .navbar-toggle {
+        position: relative;
+        float: right;
+        padding: 9px 10px;
+        margin-top: 8px;
+        margin-right: 0;
+        margin-bottom: 8px;
+        background-color: transparent;
+        background-image: none;
+        border: none;
+        border-radius: 0;
+    }
+
+    .navbar-default .navbar-toggle .icon-bar {
+        background-color: #800000;
+    }
+
+    .navbar-default .navbar-toggle:hover,
+    .navbar-default .navbar-toggle:focus {
+        background-color: #fff;
+    }
+
+    .navbar {
+        position: fixed;
+        right: 0;
+        left: 0;
+        z-index: 1030;
+    }
+
+    .btn-gift {
+        font-family: Arial;
+        color: #800000 !important;
+        font-size: 13px;
+        background: none;
+        padding: 5px !important;
+        margin-top: 15px;
+        margin-bottom: 15px;
+        border: solid #800000 1px;
+        text-decoration: none;
+        text-align: center;
+        -webkit-transition: all ease 0.2s;
+        -moz-transition: all ease 0.2s;
+        transition: all ease 0.2s;
+        width: 150px;
+        margin-left: 15px;
+    }
+
+    #block-mag2026-views-block-mag-front-feature-block-1 {
+        padding-bottom: 20px;
+        margin-bottom: 12px;
+        margin-left: 12px;
+        margin-right: 12px;
+    }
+
+    .view-mag-front-feature .int-wrap {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .navlogo a {
+        /* display: inline-block; */
+        font-family: 'Oswald', sans-serif;
+        font-size: 28px;
+        line-height: 28px;
+        font-weight: 500;
+        color: #231f20;
+        text-decoration: none;
+        position: absolute;
+        margin-top: 4px;
+        margin-left: 20px;
+        /* margin-left: -7.5px; */
+    }
+
+    #edit-actions {
+        clear: both;
+        margin-top: 30px;
+        margin-left: 8px;
+    }
+
+    .navspacer {
+        display: none !important;
+    }
+
+    .mnavcon {
+        padding-top: 0;
+        margin-top: -30px;
+    }
+
+    #navbar-collapse {
+        border-bottom: 1px solid #800000;
+    }
+
+    heading {
+        display: none;
+    }
+
+    .field--name-field-issue-num p,
+    .view-taxonomy-term .field--name-name {
+        padding-left: 12px !important;
+        font-size: 45px !important;
+    }
+
+    .magazine-issue .field--name-field-issue-num p {
+        padding-top: 0;
+    }
+
+    .navbar-default .navbar-nav .open .dropdown-menu>li>a {
+        font-family: 'Source Sans Pro', sans-serif;
+        color: #800000;
+        font-weight: normal;
+        font-size: 16px;
+    }
+
+    .navbar-default .navbar-nav .open .dropdown-menu>li>a:hover,
+    .navbar-default .navbar-nav .open .dropdown-menu>li>a:focus {
+        color: #800000;
+        background-color: transparent;
+    }
+
+    .social [class*="fa fa-"],
+    .social [class*="fa icon-"] {
+        background-color: #fff;
+        border-radius: 60px;
+        color: #231f20;
+        display: inline-block;
+        height: 60px;
+        line-height: 70px;
+        margin: 10px 10px;
+        width: 60px;
+        font-size: 36px;
+        text-align: center;
+    }
+
+    .views-field-field-reftopic {
+        /*bottom: 6px !important;*/
+    }
+
+    .dropdown {
+        display: none;
+    }
+
+    .page-node-type-story .mag-story-title {
+        font-family: 'Oswald', sans-serif;
+        font-weight: 500;
+        color: #231f20;
+        font-size: 60px;
+        line-height: 65px;
+        padding-top: 15px;
+        padding-bottom: 20px;
+    }
+
+    .dropdown .open {
+        position: static !important;
+        float: none !important;
+        width: auto !important;
+        margin-top: 0 !important;
+        background-color: transparent !important;
+        border: 0 !important;
+        -webkit-box-shadow: none !important;
+        box-shadow: none !important;
+    }
+
+    .page-node-type-story .field--name-body {
+        padding-bottom: px;
+        color: #231f20;
+        font-size: 18px;
+        line-height: 32px;
+    }
+
+    .socialblock {
+        margin-top: 30px;
+    }
+
+    ul.nav li.dropdown:hover>ul.dropdown-menu {
+        /*display: none !important;*/
+    }
+
+    #views-exposed-form-mag-search-2-page-1,
+    #views-exposed-form-mag-search-2-page-2 {
+        margin-left: 12px;
+        margin-right: 12px;
+    }
+
+    #views-exposed-form-mag-search-2-page-2 {
+        margin-top: -14px;
+    }
+
+    .view-mag-search-2 {
+        margin-left: 12px;
+        margin-right: 12px;
+    }
+
+    .region-sidebar-first {
+        margin-top: 12px;
+    }
+
+    .nav>li.searchli {
+        display: none !important;
+    }
+
+    .page-node-type-generic .content {
+        margin-left: 6px;
+        margin-right: 6px;
+    }
+}
+
+div.content img {
+    max-width: 100% !important;
+}
+
+.mobsearch,
+.mobsearchicon {
+    color: #800000;
+    position: relative;
+    float: left;
+    padding: 9px 10px;
+    margin-top: 8px;
+    margin-right: 0;
+    margin-bottom: 8px;
+    background-color: transparent;
+    background-image: none;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    top: -20px;
+    left: -36px;
+    font-size: 16px;
+}
+
+.mobsearchicon .glyphicon-search {
+    font-size: 16px;
+}
+
+.container>.navbar-header,
+.container-fluid>.navbar-header,
+.container>.navbar-collapse,
+.container-fluid>.navbar-collapse {
+    margin-right: -15px;
+    margin-left: -15px;
+}
+
+.mobsearch .glyphicon {
+    font-size: 16px;
+    position: relative;
+    top: 1px;
+    display: inline-block;
+    font-family: 'Glyphicons Halflings';
+    font-style: normal;
+    font-weight: normal;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.form-submit {
+    color: #fff !important;
+}
+
+.btn-info:active,
+.btn-default:active:hover,
+.btn-default.active:hover,
+.open>.dropdown-toggle.btn-default:hover,
+.btn-default:active:focus,
+.btn-default.active:focus,
+.open>.dropdown-toggle.btn-default:focus,
+.btn-default:active.focus,
+.btn-default.active.focus,
+.open>.dropdown-toggle.btn-default.focus {
+    color: #fff;
+    background-color: #008cff;
+    border: none;
+}
+
+.btn-info:active:hover,
+.btn-info.active:hover,
+.open>.dropdown-toggle.btn-info:hover,
+.btn-info:active:focus,
+.btn-info.active:focus,
+.open>.dropdown-toggle.btn-info:focus,
+.btn-info:active.focus,
+.btn-info.active.focus,
+.open>.dropdown-toggle.btn-info.focus {
+    color: #fff;
+    background-color: #008cff;
+    border: none;
+}
+
+.notesli {
+    display: none;
+}
+
+.region-content img {
+    clear: both;
+}
+
+.story-inline-img {
+    padding: 36px;
+    /*background: #231f20;*/
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 24px;
+    color: #77787b;
+    font-weight: 600;
+    margin-top: 24px;
+    margin-bottom: 24px;
+}
+
+.story-inline-img figcaption {
+    padding: 0;
+    margin: 0;
+    max-width: 100%;
+}
+
+.story-inline-img img {
+    width: 100%;
+    padding-bottom: 12px;
+}
+
+.navbar.container {
+    max-width: 970px !important;
+}
+
+.views-field-field-mag-carousel-image-caption {
+    margin-top: 6px;
+    color: #231f20;
+    font-size: 16px;
+    line-height: 24px;
+    padding-top: 0;
+    font-weight: 500;
+}
+
+.slick-arrow::before {
+    color: #fff;
+    font-size: 48px;
+    font-size: 4rem;
+}
+
+.slick-arrow {
+    border: 0;
+    border-radius: 50%;
+    font-size: 0;
+    height: 42px;
+    pointer-events: auto;
+    position: absolute;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+    width: 60px;
+}
+
+.slick-dots li button:before {
+    font-family: 'slick';
+    font-size: 16px;
+    line-height: 20px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 20px;
+    height: 20px;
+    content: '•';
+    text-align: center;
+    opacity: .25;
+    color: #231f20 !important;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.slick-dots {
+    position: absolute;
+    bottom: -48px;
+    display: block;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    text-align: center;
+}
+
+#block-mag2026-releasesinfo h3 {
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+.form-item,
+.form-actions {
+    padding: 6px;
+    font-size: 16px;
+}
+
+.footerlogo1 {
+    padding-bottom: 24px;
+}
+
+.ucnavlogo {
+    min-width: 250px;
+    width: 100%;
+}
+
+.page-node-type-generic .ucnavlogo {
+    padding-left: 3px;
+}
+
+.views-exposed-form .form-item-name {
+    display: none;
+}
+
+.page-node-type-story .field--name-description p {
+    display: none;
+}
+
+
+/* TOC */
+
+.core-sidebar1 .inquiry h2 {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 18px;
+    text-transform: uppercase;
+    color: #fff;
+    line-height: 1em;
+    padding: 12px 12px 12px 12px;
+    margin: 0;
+    margin-top: 12px;
+    margin-bottom: 12px;
+    background: #daac2e;
+    color: #fff;
+}
+
+.core-sidebar1 h2 {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 18px;
+    text-transform: uppercase;
+    color: #fff;
+    line-height: 1em;
+    padding: 12px 12px 12px 12px;
+    margin: 0;
+    margin-top: 12px;
+    margin-bottom: 12px;
+    background: #93abc3;
+    color: #fff;
+}
+
+.core-sidebar1 .issue-block {
+    background: none;
+    padding: 0;
+    padding: 0;
+    margin-bottom: 30px;
+}
+
+.magazine-issue .core-sidebar1 .field--name-field-issue-pdf {
+    margin-top: 0;
+}
+
+.magazine-issue .core-toc1 .field--name-body h2 {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 18px;
+    text-transform: uppercase;
+    color: #fff;
+    line-height: 1em;
+    padding: 12px 12px 12px 12px;
+    margin: 0;
+    margin-top: 0;
+    margin-bottom: 12px;
+    background: #93abc3;
+    color: #fff;
+}
+
+.core-toc1 .content {
+    padding-top: 30px;
+    border-top: solid;
+    border-width: 2px;
+    /* Set the hr color */
+    border-color: #afaeae;
+    /* old IE */
+}
+
+.magazine-issue .inquiry1 .field--name-body h2 {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 18px;
+    text-transform: uppercase;
+    color: #fff;
+    line-height: 1em;
+    padding: 12px 12px 12px 12px;
+    margin: 0;
+    margin-top: 0;
+    margin-bottom: 12px;
+    background: #daac2e !important;
+    color: #fff;
+}
+
+
+/* END TOC */
+
+
+/* POETRY MONTH */
+
+#block-mag2026-views-block-poetry-month-block-1 .img-responsive,
+#block-mag2026-views-block-poetry-month-block-2 .img-responsive {
+    padding-bottom: 12px;
+}
+
+.page-node-type-poetry-month-item .field--name-field-pomo-img-1 {
+    max-width: 366px;
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+#block-mag2026-poetrymonthsidebar .pomoback1 {
+    margin-top: 50px;
+}
+
+#block-mag2026-poetrymonthsidebar .pomoback1 a {
+    font-family: 'Oswald', sans-serif;
+    font-size: 16px;
+    line-height: 24px;
+    color: #008cff;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+#block-mag2026-poetrymonthsidebar .pomoback1 img {
+    padding-right: 5px;
+    padding-bottom: 7px;
+}
+
+.page-node-type-poetry-month-item .field--name-field-pomo-body-1 {
+    color: #231f20;
+    font-size: 18px;
+    line-height: 32px;
+}
+
+#block-mag2026-summerbeachreadsheader img {
+    max-width: 100% !important;
+    padding-left: 18px;
+    padding-right: 18px;
+    padding-bottom: 36px;
+    padding-top: 12px;
+}
+
+#block-mag2026-summerbeachreadsheader col-md-12 {
+    padding-left: 6px;
+    padding-right: 6px;
+    padding-bottom: 36 px;
+    padding-top: 12px;
+}
+
+#block-mag2026-views-block-poetry-month-block-3 img {
+    padding-bottom: 12px;
+}
+
+
+.navbar.container,
+.navbar.container-fluid {
+    margin-top: 0;
+}
+
+.glyphicon-trash:before {
+    content: '';
+}
+
+.story figure,
+.story-inline-img {
+    padding: 36px;
+    /* background: #231f20; */
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 24px;
+    color: #77787b;
+    font-weight: 600;
+    margin-top: 24px;
+    margin-bottom: 24px;
+}
+
+.story img {
+    width: 100%;
+    padding-bottom: 12px;
+    height: auto;
+}

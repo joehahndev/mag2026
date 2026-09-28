@@ -1,0 +1,15 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  drupal:
+    uses: joehahndev/drupal-module-ci/.github/workflows/drupal.yml@main
+    with:
+      install-map: |
+        .:web/themes/custom/mag2026
+      phpstan-level: '6'

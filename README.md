@@ -1,5 +1,7 @@
 # Mag 2026 — a standalone Drupal 10/11 magazine theme
 
+[![CI](https://github.com/joehahndev/mag2026/actions/workflows/ci.yml/badge.svg)](https://github.com/joehahndev/mag2026/actions/workflows/ci.yml)
+
 A modern, **dependency-free** rebuild of a university magazine theme for Drupal
 10 and 11. Mag 2026 reproduces the original design pixel-for-pixel while
 removing every runtime dependency the old theme carried: **no Bootstrap base

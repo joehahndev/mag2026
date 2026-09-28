@@ -13,16 +13,21 @@
  */
 
 /**
- * Input element types that should receive the `.form-control` class.
+ * Returns the input element types that receive the `.form-control` class.
  *
- * Mirrors the set the Bootstrap base theme used to enhance. Buttons, checkboxes,
- * radios, hidden and file inputs are deliberately excluded.
+ * Mirrors the set the Bootstrap base theme used to enhance. Buttons,
+ * checkboxes, radios, hidden and file inputs are deliberately excluded.
+ *
+ * @return string[]
+ *   Form API `#type` values.
  */
-const MAG2026_FORM_CONTROL_TYPES = [
-  'text', 'textfield', 'email', 'tel', 'url', 'search', 'password',
-  'number', 'date', 'datetime', 'datetime-local', 'time', 'week', 'month',
-  'color', 'range', 'search_api_autocomplete',
-];
+function _mag2026_form_control_types(): array {
+  return [
+    'text', 'textfield', 'email', 'tel', 'url', 'search', 'password',
+    'number', 'date', 'datetime', 'datetime-local', 'time', 'week', 'month',
+    'color', 'range', 'search_api_autocomplete',
+  ];
+}
 
 /**
  * Implements hook_preprocess_HOOK() for input.html.twig.
@@ -34,7 +39,7 @@ function mag2026_preprocess_input(array &$variables): void {
   $element = $variables['element'] ?? [];
   $type = $element['#type'] ?? '';
 
-  if (in_array($type, MAG2026_FORM_CONTROL_TYPES, TRUE)) {
+  if (in_array($type, _mag2026_form_control_types(), TRUE)) {
     $variables['attributes']['class'][] = 'form-control';
   }
 
@@ -75,12 +80,17 @@ function mag2026_preprocess_form_element(array &$variables): void {
 }
 
 /**
- * Taxonomy term IDs that render with the alternate "alumni" colour scheme.
+ * Returns the taxonomy term IDs that use the alternate "alumni" colour scheme.
  *
  * These are the alumni-facing sections in the "formats" vocabulary (Alumni
  * Essay, Notes, Releases, Deaths, Lite of the Mind).
+ *
+ * @return int[]
+ *   Term IDs.
  */
-const MAG2026_ALUMNI_TERMS = [29, 131, 197, 493, 1148];
+function _mag2026_alumni_terms(): array {
+  return [29, 131, 197, 493, 1148];
+}
 
 /**
  * Implements hook_preprocess_HOOK() for html.html.twig.
@@ -92,7 +102,7 @@ const MAG2026_ALUMNI_TERMS = [29, 131, 197, 493, 1148];
  */
 function mag2026_preprocess_html(array &$variables): void {
   $term = \Drupal::routeMatch()->getParameter('taxonomy_term');
-  if ($term && in_array((int) $term->id(), MAG2026_ALUMNI_TERMS, TRUE)) {
+  if ($term && in_array((int) $term->id(), _mag2026_alumni_terms(), TRUE)) {
     $variables['attributes']['class'][] = 'alumnitheme';
   }
 }
